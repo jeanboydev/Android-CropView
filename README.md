@@ -85,6 +85,10 @@ CropActivity不需要ActionBar
 
 ![演示][1]
 
+## 感谢
+
+* [IsseiAoki/SimpleCropView](https://github.com/IsseiAoki/SimpleCropView)
+
 ## 关于我
 
 * Mail: jeanboy@foxmail.com
