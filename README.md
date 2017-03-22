@@ -1,14 +1,14 @@
-##CropView
+## CropView
 
 ------
 
-##介绍
+## 介绍
 
 android image cropping library. Support from camera, gallery, image rotate.
 
 Android的图像裁剪库。支持从相机，图库选择图片，裁切时图像旋转。
 
-##使用
+## 使用
 
 * 导入lib-cropview并在AndroidManifest.xml中添加Activity
 ```java 
