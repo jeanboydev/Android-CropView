@@ -26,6 +26,7 @@ import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
+
 @RuntimePermissions
 public class MainActivity extends AppCompatActivity implements CropperHandler {
 
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements CropperHandler {
 
 
     /*-------------------权限处理-----------------*/
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

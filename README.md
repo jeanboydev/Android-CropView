@@ -27,6 +27,8 @@ Android的图像裁剪库。支持从相机，图库选择图片，裁切时图�
     public CropperParams getParams() {
 		//配置裁切框比例
         return new CropperParams(1, 1);
+        //不约束裁切比例
+        // return new CropperParams(0, 0);
     }
 
     @Override

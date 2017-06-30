@@ -65,6 +65,9 @@ public class CropActivity extends AppCompatActivity {
         cropImageView = (CropImageView) findViewById(R.id.cropImageView);
         loadingDialog = new LoadingDialog(this);
         cropImageView.setCustomRatio(aspect_x, aspect_Y);
+        if (aspect_x <= 0 && aspect_x <= 0) {
+            cropImageView.setCropMode(CropImageView.CropMode.FREE);
+        }
         loadingDialog.show();
         cropImageView.startLoad(imgUri, mLoadCallback);
     }
