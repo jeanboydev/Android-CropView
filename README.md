@@ -25,7 +25,7 @@ Android的图像裁剪库。支持从相机，图库选择图片，裁切时图�
 
     @Override
     public CropperParams getParams() {
-		//配置裁切框比例
+        //配置裁切框比例
         return new CropperParams(1, 1);
         //不约束裁切比例
         // return new CropperParams(0, 0);
@@ -74,12 +74,12 @@ Android的图像裁剪库。支持从相机，图库选择图片，裁切时图�
 ## 注意事项
 CropActivity不需要ActionBar
 ```java
-  <style name="AppTheme.NoActionBar" parent="AppTheme">
-        <!-- 关闭ActionBar -->
-        <item name="windowActionBar">false</item>
-        <!-- 隐藏title -->
-        <item name="windowNoTitle">true</item>
-	</style>
+<style name="AppTheme.NoActionBar" parent="AppTheme">
+    <!-- 关闭ActionBar -->
+    <item name="windowActionBar">false</item>
+    <!-- 隐藏title -->
+    <item name="windowNoTitle">true</item>
+</style>
 ```
 
 
