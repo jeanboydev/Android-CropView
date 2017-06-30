@@ -1,6 +1,7 @@
 package com.jeanboy.cropview.cropper;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -48,10 +49,19 @@ public class CropperManager {
     public void pickFromCamera() {
         if (cropperHandler == null) return;
         createCameraUri();//生成相机缓存文件
-        cropperHandler.getActivity().startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE).
-                        putExtra(MediaStore.EXTRA_OUTPUT, cameraCacheUri),
-                CropperParams.REQUEST_PICK_CAMERA);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            ContentValues contentValues = new ContentValues(1);
+            contentValues.put(MediaStore.Images.Media.DATA, cameraCacheUri.getPath());
+            contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+            Uri uri = cropperHandler.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            cropperHandler.getActivity().startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE).
+                    putExtra(MediaStore.EXTRA_OUTPUT, uri), CropperParams.REQUEST_PICK_CAMERA);
+        } else {
+            cropperHandler.getActivity().startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE).
+                            putExtra(MediaStore.EXTRA_OUTPUT, cameraCacheUri),
+                    CropperParams.REQUEST_PICK_CAMERA);
+        }
     }
 
     public void pickFromGallery() {
@@ -116,7 +126,8 @@ public class CropperManager {
 
     public void createCameraUri() {
         //创建相机拍照文件保存目录，默认保存在/mnt/sdcard/Android/data/<包名>/cache
-        cameraCacheUri = Uri.fromFile(cropperHandler.getActivity().getExternalCacheDir()).buildUpon().appendPath(getCameraFileName()).build();
+        cameraCacheUri = Uri.fromFile(cropperHandler.getActivity().getExternalCacheDir()).buildUpon().appendPath(getCameraFileName())
+                .build();
     }
 
     private String getCameraFileName() {
