@@ -88,6 +88,11 @@ public class MainActivity extends AppCompatActivity implements CropperHandler {
         CropperManager.getInstance().handlerResult(requestCode, resultCode, data);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        CropperManager.getInstance().destroy();
+    }
 
     /*-------------------权限处理-----------------*/
 
